@@ -1,0 +1,175 @@
+---
+title: "NSEC SG2 Timelines Dataset Documentation"
+format: html
+toc: true
+---
+
+# 1. Disclaimer
+
+These data are published for general information only and do not constitute legal or professional advice. No responsibility is accepted for errors, omissions, or for any consequences arising from the use of the information provided.
+
+## License 
+
+CC-BY-4.0 - Timelines DB by NSEC.
+
+# 2. Explanation Database
+
+## Attribute Definitions
+Definitions of attributes in the database with their corresponding data type. The current public dataset only contains the latest version data. 
+
+| Attribute name         | Data type | Discription |
+|------------------------|-----------|-------------|
+| name                   | string   | Describes the official name of the offshore windfarm polygon. |
+| unique_id              | string   | Unique identifier in the dataset (Country + Number) |
+| country                | string   | Country where the windfarm is located (ISO 3166-1 codes, GB is UK) |
+| status_group           | string   | Overarching status group the windfarm is in (definitions in Table 3) |
+| status_explanation     | string   | Detailed explanation of the windfarm's status (definitions in Table 3) |
+| date                   | datetime | Date when the current status of the offshore windfarm started, likely in the past. |
+| target_mw              | integer  | Describes the target MW of the windfarm, if a range is applicable the maximum value is filled in. The target_mw is a integer value so it can be used in calculations. |
+| target_year            | integer  | Year that the offshore windfarm will enter that status, possibly in the future. |
+| area_calculated        | float    | Describes the area in km² based on calculations using the local projection of a country. |
+| area_official          | float    | Describes the area in km² based on official documents. |
+| operator               | string   | Describes the operator of the windfarm. |
+| n_turbines             | integer  | Number of turbines in the windfarm. |
+| hub_height             | integer  | Hub height in meters based on the maximum possible value for hub height. |
+| n_rotorblades          | integer  | Number of rotorblades per turbine. |
+| rotor_diameter         | integer  | Diameter of rotorblades per turbine in meters, if a range is applicable the maximum value is filled in. |
+| hammerblow_energy      | integer  | Energy delivered by the hammer to drive the piles into the seabed (kJ) |
+| foundation_technique   | string   | Describes the foundation techniques (based on definitions in Table 5). |
+| mitigation             | string   | Link to mitigation measures, not publicly available |
+| source                 | string   | States the shapefile/geopackage data source used in the database. |
+| version                | string   | Version of the polygon. Current data is ‘v1’; older versions follow yearly numbered labels according to the convention 'vyear’. |
+| previous_id            | string   | Unique ID of the polygon used in a previous version of the database, which can be used to track the changes of a polygon over time |
+: Table 1. Attributes used in the NSEC Timelines database, their corresponding datatypes and definition. 
+
+
+## Current Version
+
+Current version of the **NSEC Timelines** database is v1 published on: **5-11-2025**.
+A yearly update is expected. 
+---
+
+## Projection
+
+The draft Offshore Windfarm database uses the **WGS84 projection (EPSG:4326)**, which is a globally recognized datum and a standard for global applications.
+
+- The received data was already in EPSG:4326.
+- In some cases data was initially delivered in regional projections and later reprojected to match EPSG:4326.
+- For area calculations, a local projection has been used (Table 2) which also has been checked by the respective countries.
+
+## Local Projection Table
+| Country | Projection (EPSG Code) |
+|---|---|
+| BE | 32631 |
+| NO | 25833 |
+| DE | 3035 |
+| DK | 25832 |
+| IR  | 32629 |
+| FR | 25830 |
+| UK | 27700 |
+| NL | 32631 |
+: Table 2. Local projections used for area calculation before reprojecting it to WGS84.
+
+
+# 3. Status
+
+|     status_group       |     status_explanation                                    |
+|------------------------|-----------------------------------------------------------|
+|     Planning           |     Wind energy   development zone - Search Area          |
+|     Planning           |     Wind   energy development area - Wind Energy Site     |
+|     Planning           |     Development   site under pre-investigation            |
+|     Planning           |     Wind   energy site for tendering                      |
+|     Planning           |     Wind   energy site awarded                            |
+|     Development        |     OWF   approved                                        |
+|     Development        |     OWF under   construction                              |
+|     Production         |     OWF in   operation                                    |
+|     Decommissioning    |     OWF   Decommissioned                                  |
+: Table 3. Options for status_group and status_explanation used in the NSEC Timelines database
+
+
+## Attributes to be filled in with each status
+
+|     status_group       |     status_explanation                                    |     attributes   to fill in:                                                                                                                                                                                                             |
+|------------------------|-----------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     Planning           |     Wind energy   development zone - Search Area          |     Name,   Geometry, Target _MW, area, year, country                                                                                                                                                                                    |
+|     Planning           |     Wind   energy development area - Wind Energy Site     |                                                                                                                                                                                                                                          |
+|     Planning           |     Development   site under pre-investigation            |                                                                                                                                                                                                                                          |
+|     Planning           |     Wind   energy site for tendering                      |     Name,   Geometry, Target _MW, area, year, country                                                                                                                                                                                    |
+|     Planning           |     Wind   energy site awarded                            |     Name,   Geometry, Target _MW, area, year, operator, country                                                                                                                                                                          |
+|     Development        |     OWF   approved                                        |     Name, Geometry,   Target _MW, area, year, operator, foundation, technique, number of turbines,   hub height, number of rotorblades, rotor diameter, (hammerblow energy),   country, mitigation measures (as a link to a document)    |
+|     Development        |     OWF under   construction                              |                                                                                                                                                                                                                                          |
+|     Production         |     OWF in   operation                                    |                                                                                                                                                                                                                                          |
+|     Decommissioning    |     OWF   Decommissioned                                  |     
+: Table 4. Attributes filled in with each status. 
+
+## Mapping status used in UK & Ireland to NSEC status
+Uk & Ireland have different status phases compared to the other countries in NSEC. For both UK and Ireland, a suitable mapping had to be discussed in order for the status to align with the national and NSEC-used vocabulary. 
+
+### Ireland mapping:
+
+1.  As long as an operator doesn’t have a MAC (Maritime Area Consent: gain temporary rights over an area of seabed from the state), it will stay as “Wind energy site”.
+2.  When the operator has a MAC, but not yet a planning consent from An Bord Pleanála (The Planning Board: the national planning appeals board), it will be ‘Wind energy site awarded’ (and this implies that this is a status that is in an equally advanced stage as the UK states ‘In Planning’ and ‘Government Support on Offer’)
+3.  Only when the operator has both a MAC and a planning consent, it will be “OWF approved”.
+
+Final Mapping: 
+
+1. DMAP-area (area as described in the National Designated Maritime Area Plan) = 'Wind energy development zone - Search Area'
+2. Area inside a DMAP-area, that will next either go through an auction (ORESS) or through a merchant route = "Wind energy site"
+
+3. a) ORESS-site = "Wind energy site for tendering", and when it has been granted to a specific project operator it is a "Wind energy site awarded"
+
+3. b) Site through merchant route = This will still be categorized as a "Wind energy site", and only when the MAC is granted to a specific project operator it is a "Wind energy site awarded".
+4. The end result of either an ORESS-site or a site through merchant route = "Wind energy site awarded".
+
+After that, the project operator will apply for all the necessary permits and will then follow the next phases of (compliant with the other phases used in NSEC countries):
+
+5. "OWF approved" (when all the permits have been approved, so the project operator can then start to build).
+6. "OWF under construction" (when the offshore construction starts).
+7. "OWF in operation" (when the offshore wind farm is fully operational).
+
+### UK Mapping:
+In the UK, two parties are responsible for the Offshore Windfarm data. In England, Wales, & Northern Ireland, this is the Crown Estate. In Scotland this is the Crown Estate Scotland. Data from both parties needs to be considered, even though Scotland does not have representation in NSEC SG2. 
+
+For the ‘In Planning’ sites, the site’s developer has an agreement to lease the site area from the seabed owner (The Crown Estate or Crown Estate Scotland), but they do not have planning approval from Government to begin construction. The site would remain defined as ‘Wind energy site awarded’.
+ 
+‘Government Support on Offer’ refers to a slightly more advanced state of a site, where along with the agreement for lease, the site also has a financial ‘Contract for Difference’ agreed with the UK Government after being successful in an auction. At this stage it still does not have planning approval, so ‘OWF approved’ is not correct. This is mapped as ‘wind energy site awarded’.
+ 
+The ‘Wind energy site for tendering’ status is not appropriate, as all of these sites would have already been through tendering in the UK system, or were not subject to tendering in the first place (all the sites with a status of ‘Pre-planning Application’ are already past this stage). This would be ‘Wind energy site awarded’. Except for sites that were not subject to tender and so, presumably, were subject of private agreements to provide electricity similar to our ‘merchant route’ to market. These sites remain ‘Wind energy site’ status but could be considered ‘wind energy site awarded’ once a lease is granted and the developer becomes entitled to apply for planning consent.  
+
+1. Area designated for OWE development in an MSP = 'Wind energy development zone - Search Area'.
+
+2. In Planning (developer has an agreement to lease the site, but not yet planning approval from Government to begin construction) = "Wind energy site awarded".
+
+3. a) Pre-planning Application (and subject to tendering) = "Wind energy site awarded".
+
+3. b) Pre-planning Application (not subject to tendering, but private agreements) and granted a lease = "Wind energy site awarded".
+
+4. Government Support on Offer  = "Wind energy site awarded".
+
+After that, the project operator will apply for all the necessary permits and will then follow the next phases of (compliant with the other phases used in NSEC countries):
+
+5. Consented = "OWF approved" (when all the permits have been approved, so the project operator can then start to build).
+
+6. Under Construction = "OWF under construction" (when the offshore construction starts).
+
+7. Operational = "OWF in operation" (when the offshore wind farm is fully operational).
+
+
+
+# 4. Foundation Technique
+
+|     Foundation_technique     |
+|---|
+|     Grounded:   Not Specified    |
+|     Grounded:   Various    |
+|     Grounded:   Monopile    |
+|     Grounded:   Gravity-Base    |
+|     Grounded:   Tripod    |
+|     Grounded:   Jacket    |
+|     Grounded:   Tripile    |
+|     Floating:   Spar Floater    |
+|     Floating:   Semi-Submersible Platform    |
+|     Floating:   Not Specified    |
+|     Unknown    |
+
+: Table 5. Foundation techniques used. 
