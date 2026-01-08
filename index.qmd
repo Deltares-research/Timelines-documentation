@@ -116,8 +116,7 @@ Final Mapping:
 1. DMAP-area (area as described in the National Designated Maritime Area Plan) = 'Wind energy development zone - Search Area'
 2. Area inside a DMAP-area, that will next either go through an auction (ORESS) or through a merchant route = "Wind energy site"
 
-3. a) ORESS-site = "Wind energy site for tendering", and when it has been granted to a specific project operator it is a "Wind energy site awarded"  
-    b) Site through merchant route = This will still be categorized as a "Wind energy site", and only when the MAC is granted to a specific project operator it is a "Wind energy site awarded".
+3. **a)** ORESS-site = "Wind energy site for tendering", and when it has been granted to a specific project operator it is a "Wind energy site awarded".  3**b)** Site through merchant route = This will still be categorized as a "Wind energy site", and only when the MAC is granted to a specific project operator it is a "Wind energy site awarded".
 4. The end result of either an ORESS-site or a site through merchant route = "Wind energy site awarded".
 
 After that, the project operator will apply for all the necessary permits and will then follow the next phases of (compliant with the other phases used in NSEC countries):
@@ -139,8 +138,7 @@ The ‘Wind energy site for tendering’ status is not appropriate, as all of th
 
 2. In Planning (developer has an agreement to lease the site, but not yet planning approval from Government to begin construction) = "Wind energy site awarded".
 
-3. a) Pre-planning Application (and subject to tendering) = "Wind energy site awarded". 
-    b) Pre-planning Application (not subject to tendering, but private agreements) and granted a lease = "Wind energy site awarded".
+3. **a)** Pre-planning Application (and subject to tendering) = "Wind energy site awarded". 3**b)** Pre-planning Application (not subject to tendering, but private agreements) and granted a lease = "Wind energy site awarded".
 
 4. Government Support on Offer  = "Wind energy site awarded".
 
