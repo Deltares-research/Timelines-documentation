@@ -91,15 +91,15 @@ The draft Offshore Windfarm database uses the **WGS84 projection (EPSG:4326)**, 
 
 |     status_group       |     status_explanation                                    |     attributes   to fill in:                                                                                                                                                                                                             |
 |------------------------|-----------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|     Planning           |     Wind energy   development zone - Search Area          |     Name,   Geometry, Target _MW, area, year, country                                                                                                                                                                                    |
-|     Planning           |     Wind   energy development area - Wind Energy Site     |                                                                                                                                                                                                                                          |
-|     Planning           |     Development   site under pre-investigation            |                                                                                                                                                                                                                                          |
-|     Planning           |     Wind   energy site for tendering                      |     Name,   Geometry, Target _MW, area, year, country                                                                                                                                                                                    |
-|     Planning           |     Wind   energy site awarded                            |     Name,   Geometry, Target _MW, area, year, operator, country                                                                                                                                                                          |
-|     Development        |     OWF   approved                                        |     Name, Geometry,   Target _MW, area, year, operator, foundation, technique, number of turbines,   hub height, number of rotorblades, rotor diameter, (hammerblow energy),   country, mitigation measures (as a link to a document)    |
-|     Development        |     OWF under   construction                              |                                                                                                                                                                                                                                          |
-|     Production         |     OWF in   operation                                    |                                                                                                                                                                                                                                          |
-|     Decommissioning    |     OWF   Decommissioned                                  |     
+|     Planning           |     Wind energy   development zone - Search Area          |     Name,   Geometry, Target _MW, area, year, country, date                                                                                                                                                                                    |
+|     Planning           |     Wind   energy development area - Wind Energy Site     |      Name,   Geometry, Target _MW, area, year, country, date                                                                                                                                                                                                                                    |
+|     Planning           |     Development   site under pre-investigation            |        Name,   Geometry, Target _MW, area, year, country, date                                                                                                                                                                                                                                  |
+|     Planning           |     Wind   energy site for tendering                      |     Name,   Geometry, Target _MW, area, year, country, date                                                                                                                                                                                    |
+|     Planning           |     Wind   energy site awarded                            |     Name,   Geometry, Target _MW, area, year, operator, country, date                                                                                                                                                                          |
+|     Development        |     OWF   approved                                        |     Name, Geometry,   Target _MW, area, year, operator, foundation, technique, number of turbines,   hub height, number of rotorblades, rotor diameter, (hammerblow energy),   country, date, mitigation measures (as a link to a document)    |
+|     Development        |     OWF under   construction                              |        Name, Geometry,   Target _MW, area, year, operator, foundation, technique, number of turbines,   hub height, number of rotorblades, rotor diameter, (hammerblow energy),   country, date, mitigation measures (as a link to a document)                                                                                                                                                                                                                                  |
+|     Production         |     OWF in   operation                                    |        Name, Geometry,   Target _MW, area, year, operator, foundation, technique, number of turbines,   hub height, number of rotorblades, rotor diameter, (hammerblow energy),   country, date, mitigation measures (as a link to a document)                                                                                                                                                                                                                                  |
+|     Decommissioning    |     OWF   decommissioned                                  |     Name, Geometry,   Target _MW, area, year, operator, foundation, technique, number of turbines,   hub height, number of rotorblades, rotor diameter, (hammerblow energy),   country, date, mitigation measures (as a link to a document)
 : Table 4. Attributes filled in with each status. 
 
 ## Mapping status used in UK & Ireland to NSEC status
@@ -116,9 +116,8 @@ Final Mapping:
 1. DMAP-area (area as described in the National Designated Maritime Area Plan) = 'Wind energy development zone - Search Area'
 2. Area inside a DMAP-area, that will next either go through an auction (ORESS) or through a merchant route = "Wind energy site"
 
-3. a) ORESS-site = "Wind energy site for tendering", and when it has been granted to a specific project operator it is a "Wind energy site awarded"
-
-3. b) Site through merchant route = This will still be categorized as a "Wind energy site", and only when the MAC is granted to a specific project operator it is a "Wind energy site awarded".
+3. a) ORESS-site = "Wind energy site for tendering", and when it has been granted to a specific project operator it is a "Wind energy site awarded"  
+    b) Site through merchant route = This will still be categorized as a "Wind energy site", and only when the MAC is granted to a specific project operator it is a "Wind energy site awarded".
 4. The end result of either an ORESS-site or a site through merchant route = "Wind energy site awarded".
 
 After that, the project operator will apply for all the necessary permits and will then follow the next phases of (compliant with the other phases used in NSEC countries):
@@ -140,9 +139,8 @@ The ‘Wind energy site for tendering’ status is not appropriate, as all of th
 
 2. In Planning (developer has an agreement to lease the site, but not yet planning approval from Government to begin construction) = "Wind energy site awarded".
 
-3. a) Pre-planning Application (and subject to tendering) = "Wind energy site awarded".
-
-3. b) Pre-planning Application (not subject to tendering, but private agreements) and granted a lease = "Wind energy site awarded".
+3. a) Pre-planning Application (and subject to tendering) = "Wind energy site awarded". 
+    b) Pre-planning Application (not subject to tendering, but private agreements) and granted a lease = "Wind energy site awarded".
 
 4. Government Support on Offer  = "Wind energy site awarded".
 
