@@ -38,7 +38,7 @@ Definitions of attributes in the database with their corresponding data type. Th
 | foundation_technique   | string   | Describes the foundation techniques (based on definitions in Table 5). |
 | mitigation             | string   | Link to mitigation measures, not publicly available |
 | source                 | string   | States the shapefile/geopackage data source used in the database. |
-| version                | string   | Version of the polygon. Current data is ‘v1’; older versions follow yearly numbered labels according to the convention 'vyear’. |
+| version                | string   | Version of the polygon. Current data is ‘current version’; older versions follow yearly numbered labels according to the convention 'vyear’. |
 | previous_id            | string   | Unique ID of the polygon used in a previous version of the database, which can be used to track the changes of a polygon over time |
 : Table 1. Attributes used in the NSEC Timelines database, their corresponding datatypes and definition. 
 
@@ -83,7 +83,7 @@ The draft Offshore Windfarm database uses the **WGS84 projection (EPSG:4326)**, 
 |     Development        |     OWF   approved                                        |
 |     Development        |     OWF under   construction                              |
 |     Production         |     OWF in   operation                                    |
-|     Decommissioning    |     OWF   Decommissioned                                  |
+|     Decommissioning    |     OWF   decommissioned                                  |
 : Table 3. Options for status_group and status_explanation used in the NSEC Timelines database
 
 
