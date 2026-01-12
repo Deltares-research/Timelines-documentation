@@ -45,7 +45,7 @@ Definitions of attributes in the database with their corresponding data type. Th
 
 ## Current Version
 
-Current version of the **NSEC Timelines** database is v1 published on: **5-11-2025**.
+Current version of the **NSEC Timelines** database is ***current_version*** published on: **5-11-2025**.
 A yearly update is expected. 
 ---
 
